@@ -1,0 +1,422 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  text-decoration: none;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+}
+
+.header {
+  background: #0d440d;
+  padding-inline: 16px;
+}
+
+.nav {
+  max-width: 1280px;
+  height: 60px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 48px;
+  color: #00ff36;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 10px 2px 7px black;
+  text-decoration: none;
+}
+
+.nav-list {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-list li a {
+  color: white;
+  font-size: 18px;
+  padding-block: 16px;
+  text-decoration: none;
+}
+
+.nav-list li a:hover {
+  color: #00ff36;
+  text-shadow: 0 0 10px #00ff36;
+  transition: 0.3s ease;
+}
+
+.vscode:hover {
+  background-color: #007acc !important;
+  color: aqua !important;
+  border: 2px solid;
+}
+
+.sublimetext:hover {
+  background-color: #1a1a1a !important;
+  color: #ff9800 !important;
+  border: 2px solid;
+}
+
+.flowgorithm:hover {
+  background-color: #00b7eb !important;
+  color: #66d6f2 !important;
+  border: 2px solid;
+}
+
+.cmclient:hover {
+  background-color: #ffd700 !important;
+  color: #332b00 !important;
+  border: 2px solid;
+}
+
+.winrar:hover {
+  background-color: #7b2c8b !important;
+  color: #a158b8 !important;
+  border: 2px solid;
+}
+/*
+.marquee {
+  height: 30px;
+  width: 100%;
+  overflow: hidden;
+  background-color: darkgreen;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+  */
+
+/*
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 15s linear infinite;
+  color: rgb(5, 245, 153);
+  font-weight: bold;
+  font-size: 16px;
+}
+  */
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+footer {
+  background-color: #145a14;
+  color: white;
+  padding: 1px;
+  text-align: center;
+}
+
+/* Menu Hamburguer com 3 barras */
+.hamburguer {
+  display: none;
+  position: relative;
+  width: 30px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 3000;
+}
+
+.hamburguer span,
+.hamburguer::before,
+.hamburguer::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  transition: 0.3s;
+}
+
+.hamburguer::before {
+  top: 0;
+}
+
+.hamburguer span {
+  top: 10px;
+}
+
+.hamburguer::after {
+  top: 20px;
+}
+
+@media (max-width: 768px) {
+  .hamburguer {
+    display: block;
+    position: fixed;
+    top: 26px;
+    right: 16px;
+  }
+
+  .nav-list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0e440e;
+    clip-path: circle(100px at 90% -16%);
+    transition: 1s ease-out;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0;
+    pointer-events: none;
+    z-index: 2500;
+  }
+
+  .logo {
+    font-size: 23px;
+    z-index: 3000;
+    transition: 1.5s ease-out;
+  }
+  .nav-list li a {
+    font-size: 24px;
+    opacity: 0;
+  }
+
+  .nav-list li a:nth-child(1) a {
+    transition: 0.5s 0.2s;
+  }
+
+  .nav-list li a:nth-child(2) a {
+    transition: 0.5s 0.4s;
+  }
+
+  .nav-list li a:nth-child(3) a {
+    transition: 0.5s 0.6s;
+  }
+
+  .nav.active .nav-list {
+    clip-path: circle(1500px at 90% -15%);
+    pointer-events: all;
+  }
+
+  .nav.active .nav-list a {
+    opacity: 1;
+  }
+
+  /* Transformação do menu hamburguer para o X */
+  .nav.active .hamburguer span {
+    opacity: 0;
+  }
+
+  .nav.active .hamburguer::before {
+    transform: rotate(135deg);
+    top: 10px;
+  }
+
+  .nav.active .hamburguer::after {
+    transform: rotate(-135deg);
+    top: 10px;
+  }
+
+  .dropdown-menu {
+    position: static !important;
+    box-shadow: none;
+    background-color: transparent;
+    display: none;
+  }
+
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    color: #fff;
+    font-size: 20px;
+    padding: 8px 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .hamburguer {
+    display: block;
+    position: fixed;
+    top: 26px;
+    right: 16px;
+    z-index: 3000;
+  }
+
+  .nav-list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0e380e;
+    clip-path: circle(100px at 90% -15%);
+    transition: 1s ease-out;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0;
+    pointer-events: none;
+    z-index: 2500;
+  }
+
+  .nav.active .nav-list {
+    clip-path: circle(1500px at 90% -15%);
+    pointer-events: all;
+  }
+
+  .logo {
+    font-size: 23px;
+    z-index: 3000;
+    transition: 1.5s ease-out;
+  }
+  .nav-list li a {
+    font-size: 24px;
+    opacity: 0;
+  }
+
+  .nav-list li:nth-child(1) a {
+    transition: 0.5s 0.2s;
+  }
+
+  .nav-list li:nth-child(2) a {
+    transition: 0.5s 0.4s;
+  }
+
+  .nav-list li:nth-child(3) a {
+    transition: 0.5s 0.6s;
+  }
+
+  .nav.active .nav-list {
+    clip-path: circle(1500px at 90% -15%);
+    pointer-events: all;
+  }
+
+  .nav.active .nav-list a {
+    opacity: 1;
+  }
+
+  /* Transformação do menu hamburguer para o X */
+  .nav.active .hamburguer span {
+    opacity: 0;
+  }
+
+  .nav.active .hamburguer::before {
+    transform: rotate(135deg);
+    top: 10px;
+  }
+
+  .nav.active .hamburguer::after {
+    transform: rotate(-135deg);
+    top: 10px;
+  }
+
+  .dropdown-menu {
+    position: static !important;
+    box-shadow: none;
+    background-color: transparent;
+    display: none;
+  }
+
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    color: #fff;
+    font-size: 20px;
+    padding: 8px 0;
+    text-align: center;
+  }
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #001d00;
+  min-width: 180px;
+  top: 100%;
+  left: 0;
+  z-index: 1100;
+}
+
+.dropdown {
+  position: relative;
+  z-index: 1000;
+}
+
+/* Itens do dropdown-menu */
+.dropdown-menu a {
+  padding: 10px 15px;
+  display: block;
+  color: white;
+}
+
+/* Efeito hover dos Dropdowns Menus */
+.dropdown-menu a:hover {
+  background-color: #005500;
+  color: #00ff36;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  background-color: #001d00;
+}
+
+/* Parallax */
+section.module.parallax {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+/* Imagem do parallax */
+section.module.parallax-1 {
+  background-image: url("https://www.pixelstalk.net/wp-content/uploads/image12/A-glowing-neon-green-background-with-subtle-light-waves-and-reflections-creating-a-futuristic-and-vibrant-energy-1.jpg");
+}
+
+/* Efeito sombra parallax */
+section.module.parallax:after {
+  content: "";
+  position: absolute;
+  z-index: 8;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    #000 100%
+  );
+}
