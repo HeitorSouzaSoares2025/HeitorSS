@@ -1,145 +1,182 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  text-decoration: none;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
+/* ===================== Reset e Base ===================== */
 html {
   height: 100%;
+  /* garante que o elemento HTML ocupe toda a altura */
+}
+
+body {
   margin: 0;
+  /* remove margens padrão */
+  font-family: sans-serif;
+  /* fonte padrão sem serifa */
+  min-height: 100vh;
+  /* altura mínima de toda a tela */
+
+  /* fundo em gradiente radial animado */
+  background: radial-gradient(circle at center, #001a1a, #000010, #000000);
+  animation: pulse 6s infinite alternate;
+  /* animação suave */
+}
+
+/* Animação para o fundo "pulsar" entre tons */
+@keyframes pulse {
+  0% {
+    background: radial-gradient(circle at center, #001a1a, #000010, #000000);
+  }
+
+  100% {
+    background: radial-gradient(circle at center, #002b2b, #000020, #000000);
+  }
 }
 
 main {
-  flex: 1;
+  min-height: 100vh;
+  /* força o conteúdo ocupar toda a altura da tela */
 }
 
+/* ===================== Header / Navbar ===================== */
 .header {
-  background: #0d440d;
-  padding-inline: 16px;
+  position: relative;
+  z-index: 1000;
+  /* fica acima do fundo */
 }
 
 .nav {
   max-width: 1280px;
-  height: 60px;
-  margin-inline: auto;
+  /* largura máxima */
+  margin: 0 auto;
+  /* centraliza */
   display: flex;
+  /* flexbox para organizar itens */
   justify-content: space-between;
+  /* espaço entre logo e menu */
   align-items: center;
+  /* centraliza verticalmente */
+  padding: 10 16px;
+
+  /* efeito de vidro (glassmorphism) */
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1000;
 }
 
 .logo {
-  font-size: 48px;
-  color: #00ff36;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-shadow: 10px 2px 7px black;
   text-decoration: none;
+  /* sem sublinhado */
+  list-style: none;
+  font-family: 'Press Start 2P', sans-serif;
+  /* fonte retrô */
+  font-size: 2rem;
+  color: #00ff7f;
+  /* verde neon */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  /* sombra para destaque */
+  white-space: nowrap;
+  /* evita quebra de linha */
+  border-right: 2px solid #00ff7f;
+  /* efeito cursor */
+  overflow: hidden;
+  animation: blink 1s step-start infinite;
+  /* piscar do "cursor" */
+}
+
+/* Animação do "cursor piscando" */
+@keyframes blink {
+
+  0%,
+  50%,
+  100% {
+    border-color: #00ff7f;
+  }
+
+  25%,
+  75% {
+    border-color: transparent;
+  }
 }
 
 .nav-list {
   display: flex;
-  gap: 32px;
+  /* menu em linha */
+  gap: 24px;
+  /* espaçamento entre itens */
   list-style: none;
+  /* remove marcadores */
 }
 
 .nav-list li a {
   color: white;
-  font-size: 18px;
-  padding-block: 16px;
-  text-decoration: none;
-}
-
-.nav-list li a:hover {
-  color: #00ff36;
-  text-shadow: 0 0 10px #00ff36;
-  transition: 0.3s ease;
-}
-
-.vscode:hover {
-  background-color: #007acc !important;
-  color: aqua !important;
-  border: 2px solid;
-}
-
-.sublimetext:hover {
-  background-color: #1a1a1a !important;
-  color: #ff9800 !important;
-  border: 2px solid;
-}
-
-.flowgorithm:hover {
-  background-color: #00b7eb !important;
-  color: #66d6f2 !important;
-  border: 2px solid;
-}
-
-.cmclient:hover {
-  background-color: #ffd700 !important;
-  color: #332b00 !important;
-  border: 2px solid;
-}
-
-.winrar:hover {
-  background-color: #7b2c8b !important;
-  color: #a158b8 !important;
-  border: 2px solid;
-}
-/*
-.marquee {
-  height: 30px;
-  width: 100%;
-  overflow: hidden;
-  background-color: darkgreen;
-  white-space: nowrap;
-  box-sizing: border-box;
-}
-  */
-
-/*
-.marquee-content {
-  display: inline-block;
-  padding-left: 100%;
-  animation: scroll-left 15s linear infinite;
-  color: rgb(5, 245, 153);
-  font-weight: bold;
   font-size: 16px;
-}
-  */
-
-@keyframes scroll-left {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  /* efeito suave */
 }
 
-footer {
-  background-color: #145a14;
+/* ===================== Hover uniforme navbar ===================== */
+.nav-list li a:hover,
+.dropdown-menu a:hover {
+  color: #00ff36;
+  /* verde claro */
+  text-shadow: 0 0 8px #00ff36, 0 0 15px #00ff36;
+  background-color: rgba(0, 255, 56, 0.1);
+  /* leve fundo */
+  box-shadow: 0 0 10px #00ff36, 0 0 20px #00ff36;
+  /* brilho neon */
+}
+
+/* ===================== Dropdown ===================== */
+.dropdown {
+  position: relative;
+  /* necessário para posicionar o submenu */
+}
+
+.dropdown-menu {
+  list-style: none;
+  display: none;
+  /* escondido por padrão */
+  position: absolute;
+  /* posiciona abaixo */
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+  padding: 8px 0;
+  z-index: 1100;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 16px;
   color: white;
-  padding: 1px;
-  text-align: center;
+  font-size: 14px;
 }
 
-/* Menu Hamburguer com 3 barras */
+.dropdown:hover .dropdown-menu {
+  display: block;
+  /* mostra submenu ao passar mouse */
+}
+
+/* ===================== Menu Hamburguer ===================== */
 .hamburguer {
   display: none;
-  position: relative;
+  /* só aparece em telas menores */
   width: 30px;
   height: 24px;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 3000;
+  position: relative;
+  z-index: 1200;
 }
 
+/* barras do hamburguer */
 .hamburguer span,
 .hamburguer::before,
 .hamburguer::after {
@@ -166,12 +203,28 @@ footer {
   top: 20px;
 }
 
+/* ===================== Canvas partículas ===================== */
+#particles {
+  position: fixed;
+  /* cobre a tela toda */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 800;
+  /* atrás do menu */
+  pointer-events: none;
+  /* não interfere no clique */
+}
+
+/* ===================== Mobile ===================== */
 @media (max-width: 768px) {
   .hamburguer {
     display: block;
-    position: fixed;
-    top: 26px;
-    right: 16px;
+    /* aparece no mobile */
+    position: relative;
+    z-index: 1500;
+    /* acima do menu */
   }
 
   .nav-list {
@@ -180,243 +233,57 @@ footer {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #0e440e;
-    clip-path: circle(100px at 90% -16%);
-    transition: 1s ease-out;
     flex-direction: column;
-    justify-content: space-around;
+    /* menu em coluna */
+    justify-content: center;
     align-items: center;
-    gap: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    clip-path: circle(0 at 90% -10%);
+    /* menu fechado (invisível) */
+    transition: 0.5s ease-in-out;
     pointer-events: none;
-    z-index: 2500;
+    gap: 24px;
+    z-index: 1100;
   }
 
-  .logo {
-    font-size: 23px;
-    z-index: 3000;
-    transition: 1.5s ease-out;
-  }
-  .nav-list li a {
-    font-size: 24px;
-    opacity: 0;
-  }
-
-  .nav-list li a:nth-child(1) a {
-    transition: 0.5s 0.2s;
-  }
-
-  .nav-list li a:nth-child(2) a {
-    transition: 0.5s 0.4s;
-  }
-
-  .nav-list li a:nth-child(3) a {
-    transition: 0.5s 0.6s;
-  }
-
+  /* menu ativo abre em "explosão circular" */
   .nav.active .nav-list {
-    clip-path: circle(1500px at 90% -15%);
+    clip-path: circle(1500px at 90% -10%);
     pointer-events: all;
   }
 
-  .nav.active .nav-list a {
-    opacity: 1;
+  .nav-list li a {
+    font-size: 24px;
+    text-align: center;
   }
 
-  /* Transformação do menu hamburguer para o X */
-  .nav.active .hamburguer span {
-    opacity: 0;
-  }
-
-  .nav.active .hamburguer::before {
-    transform: rotate(135deg);
-    top: 10px;
-  }
-
-  .nav.active .hamburguer::after {
-    transform: rotate(-135deg);
-    top: 10px;
-  }
-
+  /* Dropdown dentro do menu mobile */
   .dropdown-menu {
-    position: static !important;
-    box-shadow: none;
-    background-color: transparent;
     display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 8px 0;
+    z-index: 1200;
   }
 
   .dropdown.active .dropdown-menu {
-    display: block;
-  }
-
-  .dropdown-menu a {
-    color: #fff;
-    font-size: 20px;
-    padding: 8px 0;
-    text-align: center;
+    display: flex;
+    /* aparece ao clicar */
   }
 }
 
-@media (max-width: 400px) {
-  .hamburguer {
-    display: block;
-    position: fixed;
-    top: 26px;
-    right: 16px;
-    z-index: 3000;
-  }
-
-  .nav-list {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #0e380e;
-    clip-path: circle(100px at 90% -15%);
-    transition: 1s ease-out;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    gap: 0;
-    pointer-events: none;
-    z-index: 2500;
-  }
-
-  .nav.active .nav-list {
-    clip-path: circle(1500px at 90% -15%);
-    pointer-events: all;
-  }
-
-  .logo {
-    font-size: 23px;
-    z-index: 3000;
-    transition: 1.5s ease-out;
-  }
-  .nav-list li a {
-    font-size: 24px;
-    opacity: 0;
-  }
-
-  .nav-list li:nth-child(1) a {
-    transition: 0.5s 0.2s;
-  }
-
-  .nav-list li:nth-child(2) a {
-    transition: 0.5s 0.4s;
-  }
-
-  .nav-list li:nth-child(3) a {
-    transition: 0.5s 0.6s;
-  }
-
-  .nav.active .nav-list {
-    clip-path: circle(1500px at 90% -15%);
-    pointer-events: all;
-  }
-
-  .nav.active .nav-list a {
-    opacity: 1;
-  }
-
-  /* Transformação do menu hamburguer para o X */
-  .nav.active .hamburguer span {
-    opacity: 0;
-  }
-
-  .nav.active .hamburguer::before {
-    transform: rotate(135deg);
-    top: 10px;
-  }
-
-  .nav.active .hamburguer::after {
-    transform: rotate(-135deg);
-    top: 10px;
-  }
-
-  .dropdown-menu {
-    position: static !important;
-    box-shadow: none;
-    background-color: transparent;
-    display: none;
-  }
-
-  .dropdown.active .dropdown-menu {
-    display: block;
-  }
-
-  .dropdown-menu a {
-    color: #fff;
-    font-size: 20px;
-    padding: 8px 0;
-    text-align: center;
-  }
-}
-
-/* Dropdown Menu */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: #001d00;
-  min-width: 180px;
-  top: 100%;
-  left: 0;
-  z-index: 1100;
-}
-
-.dropdown {
-  position: relative;
-  z-index: 1000;
-}
-
-/* Itens do dropdown-menu */
-.dropdown-menu a {
-  padding: 10px 15px;
-  display: block;
-  color: white;
-}
-
-/* Efeito hover dos Dropdowns Menus */
-.dropdown-menu a:hover {
-  background-color: #005500;
-  color: #00ff36;
-  transition: background-color 0.3s ease;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-  background-color: #001d00;
-}
-
-/* Parallax */
-section.module.parallax {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  position: relative;
-  z-index: 1;
-}
-
-/* Imagem do parallax */
-section.module.parallax-1 {
-  background-image: url("https://www.pixelstalk.net/wp-content/uploads/image12/A-glowing-neon-green-background-with-subtle-light-waves-and-reflections-creating-a-futuristic-and-vibrant-energy-1.jpg");
-}
-
-/* Efeito sombra parallax */
-section.module.parallax:after {
-  content: "";
-  position: absolute;
-  z-index: 8;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.4) 40%,
-    #000 100%
-  );
+/* ===================== Footer ===================== */
+footer {
+  background: rgba(0, 0, 0, 0.4);
+  color: #00ffc8;
+  /* verde ciano */
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+  backdrop-filter: blur(4px);
 }
